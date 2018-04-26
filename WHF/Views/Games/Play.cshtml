@@ -1,0 +1,119 @@
+﻿@model IEnumerable<WHF.Models.Player>
+
+@{
+    ViewBag.Title = "Play";
+}
+
+<h2>Play</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.WSName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.BSName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.SName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.TName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.AName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.IName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.WPName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.FSName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.WoundName)
+        </th>
+        <th></th>
+    </tr>
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    <tr>
+        <td>
+            @Html.HiddenFor(m => Model.ElementAt(i).PlayerID)
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Attributes.WeaponSkill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Attributes.BallisticSkill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Attributes.Strength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Attributes.Toughness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Attributes.Agility)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Attributes.Intellect)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Attributes.Willpower)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Attributes.Fellowship)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ElementAt(i).Attributes.Wound)
+        </td>
+        <td>
+            @Html.ActionLink("Hit", "PlayerHit", new { id = Model.ElementAt(i).PlayerID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<br />
+
+<table class="table">
+    <tr>
+        <td>@Html.Label("Head")</td>
+        <td>@Html.Label("1")</td>
+        <td>@Html.Label("15")</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Right Arm")</td>
+        <td>@Html.Label("16")</td>
+        <td>@Html.Label("35")</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Left Arm")</td>
+        <td>@Html.Label("36")</td>
+        <td>@Html.Label("55")</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Body")</td>
+        <td>@Html.Label("56")</td>
+        <td>@Html.Label("80")</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Left Leg")</td>
+        <td>@Html.Label("81")</td>
+        <td>@Html.Label("90")</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Right Leg")</td>
+        <td>@Html.Label("91")</td>
+        <td>@Html.Label("100")</td>
+    </tr>
+</table>

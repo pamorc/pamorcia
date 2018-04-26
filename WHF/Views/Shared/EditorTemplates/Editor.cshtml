@@ -1,0 +1,4 @@
+﻿@model int
+
+@{ int tabIndex = (ViewData["TabIndex"] as int?) ?? 0; }
+@Html.TextBoxFor(model => model, new { tabindex = tabIndex })

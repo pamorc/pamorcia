@@ -1,0 +1,232 @@
+﻿@model IEnumerable<WHF.Models.Player>
+
+@{
+    ViewBag.Title = "PlayerAtts";
+}
+
+<h2>Attributes</h2>
+
+<p>
+    @Html.ActionLink("Create New Player", "Create")
+</p>
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayName(Model.First().Attributes.WSName)
+            </th>
+            <th>
+                @Html.DisplayName(Model.First().Attributes.BSName)
+            </th>
+            <th>
+                @Html.DisplayName(Model.First().Attributes.SName)
+            </th>
+            <th>
+                @Html.DisplayName(Model.First().Attributes.TName)
+            </th>
+            <th>
+                @Html.DisplayName(Model.First().Attributes.AName)
+            </th>
+            <th>
+                @Html.DisplayName(Model.First().Attributes.IName)
+            </th>
+            <th>
+                @Html.DisplayName(Model.First().Attributes.WPName)
+            </th>
+            <th>
+                @Html.DisplayName(Model.First().Attributes.FSName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            @Html.HiddenFor(model => item.PlayerID)
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attributes.WeaponSkill)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attributes.BallisticSkill)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attributes.Strength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attributes.Toughness)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attributes.Agility)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attributes.Intellect)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attributes.Willpower)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attributes.Fellowship)
+                </td>
+                <td>
+                    @Html.ActionLink("Skills", "DisplaySkills", new { id = item.PlayerID }) |
+                    @Html.ActionLink("Talents", "DisplayTalents", new { id = item.PlayerID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+<h2>Secondary Attributes</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.MDmgName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.RDmgName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.WoundName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.AttackName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.MoveName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.MagicName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.FateName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.FortuneName)
+        </th>
+        <th>
+            @Html.DisplayName(Model.First().Attributes.InsanityName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        @Html.HiddenFor(model => item.PlayerID)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes.MeleeDamage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes.RangedDamage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes.Wound)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes.Attack)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes.Move)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes.Magic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes.FatePoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes.FortunePoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes.Insanity)
+            </td>
+            <td>
+                @Html.ActionLink("Edit Attributes", "EditAttributes", new { id = item.PlayerID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h2>Armors</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Armor.Head)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Armor.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Armor.LeftArm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Armor.RightArm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Armor.LeftLeg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Armor.RightLeg)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        @Html.HiddenFor(model => item.PlayerID)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Armor.Head)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Armor.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Armor.LeftArm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Armor.RightArm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Armor.LeftLeg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Armor.RightLeg)
+            </td>
+            <td>
+                @Html.ActionLink("Edit Armor", "EditArmor", new { id = item.PlayerID })
+            </td>
+        </tr>
+    }
+
+</table>
+}
+else
+{
+    <h2>
+        No players available.
+    </h2>
+}
+

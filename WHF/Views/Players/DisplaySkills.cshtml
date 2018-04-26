@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WHF.Models.PlayerSkill>
+
+@{
+    ViewBag.Title = "PlayerSkills";
+}
+
+
+<h2>Skills for @Model.First().Player.Name</h2>
+
+<p>
+    @Html.ActionLink("Add New", "Create")
+    @Html.HiddenFor(m=> m.First().PlayerID)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SkillID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attribute)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkillValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(m => item.SkillID)
+            @Html.DisplayFor(modelItem => item.Skill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Attribute)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkillValue)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.PlayerSkillID }) |
+            @Html.ActionLink("Remove", "Delete", new { id=item.PlayerSkillID })
+        </td>
+    </tr>
+}
+
+</table>

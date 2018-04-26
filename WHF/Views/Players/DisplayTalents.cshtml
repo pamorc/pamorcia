@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WHF.Models.PlayerTalent>
+
+@{
+    ViewBag.Title = "PlayerTalents";
+}
+
+<h2>Talents for @Model.First().Player.Name</h2>
+
+<p>
+    @Html.ActionLink("Add New", "Create")
+    @Html.HiddenFor(m => m.First().PlayerID)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Talent.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(m => item.TalentID)
+            @Html.DisplayFor(modelItem => item.Talent.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.PlayerTalentID }) |
+            @Html.ActionLink("Remove", "Delete", new { id=item.PlayerTalentID })
+        </td>
+    </tr>
+}
+
+</table>

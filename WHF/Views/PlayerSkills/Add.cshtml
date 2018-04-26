@@ -1,0 +1,85 @@
+﻿@model WHF.Models.PlayerSkill
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add Skill</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Player.Name, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Raw(ViewBag.Player.Name)
+                @Html.HiddenFor(model => model.PlayerID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SkillID, "SkillID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SkillID, new SelectList(ViewBag.Skills, "SkillID", "Name"), new { @class = "form-control" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col=md=10">
+                @Html.LabelFor(model => model.Skill.Attribute, "Attribute", htmlAttributes: new { @class = "control-label col-md-2" })
+                <asp:Label ID="lblAttribute" Text="Attribute"></asp:Label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col=md=10">
+                @Html.LabelFor(model => model.Skill.Description, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
+                <asp:Label ID="lblDescription" Text="Description"></asp:Label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.PlayerID })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+
+    $(function(){
+        var AttributeEnum = [
+            "Weapon Skill",
+            "Ballistic Skill",
+            "Strength",
+            "Toughness",
+            "Agility",
+            "Intellect",
+            "Willpower",
+            "Fellowship" ]
+        $("#SkillID").change(function () {
+            var skill = $("#SkillID").val();
+            //alert("changed skill : " + skill);
+
+            var skills = @Html.Raw(ViewBag.SkillList);
+            $("#lblAttribute").text(AttributeEnum[skills[skill - 1].Attribute]);
+            $("#lblDescription").text(skills[skill - 1].Description);
+            
+        });
+    });
+
+</script>
+}
